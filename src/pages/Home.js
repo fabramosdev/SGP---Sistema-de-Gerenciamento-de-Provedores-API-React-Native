@@ -6,8 +6,9 @@ import api from '../services/api'
 export default class Home extends Component {
 
   state = {
-    contratos:[]
+    contratos:[]    
   }
+
 
   componentDidMount() {
     this.getData();
@@ -21,10 +22,13 @@ export default class Home extends Component {
       cpfcnpj: "68.857.751/0001-62"
     })
     const resultado = response.data;
-    console.log(resultado)
+    this.setState(resultado)
   }
 
   render() {
+
+    console.log(this.state)
+
     return (
       <View>
         <Text> textInComponent </Text>
