@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, SafeAreaView } from 'react-native'
 
 import api from '../services/api'
 
@@ -27,11 +27,23 @@ export default class Home extends Component {
 
   render() {
 
-    console.log(this.state)
+    let listarContratos = this.state.contratos
+    
+    console.log(listarContratos)
 
     return (
       <View>
-        <Text> textInComponent </Text>
+        {listarContratos.map(contrato => (
+          <SafeAreaView key={contrato.contratoId}>
+            <Text>Empresa: {contrato.razaoSocial}</Text>
+            <Text>Cpf/CNPJ: {contrato.cpfCnpj}</Text>
+            <Text>Endereço: {contrato.endereco_logradouro}</Text>
+            <Text>Status do Contrato: {contrato.contratoStatusDisplay}</Text>
+            <Text>Plano: {contrato.planointernet}</Text>
+            <Text>POP: {contrato.popNome}</Text>
+          </SafeAreaView>
+          
+        ))}
       </View>
     )
   }
